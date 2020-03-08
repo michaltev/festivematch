@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Particles from 'react-particles-js';
 import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo';
@@ -18,21 +18,24 @@ const particlesParams = {
   }
 };
 
-function App() {
-  return (
-    <div className="App">
-        <Particles className='particles' params={particlesParams} />
-        <Navigation />
-        <Logo />
-        <FavoriteBand/>
-        <ChooseArtistsForm />
-        {/*
-        <FestivalList />
-        <FestivalTable />
+class App extends Component {
 
-      */}
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+          <Particles className='particles' params={particlesParams} />
+          <Navigation />
+          <Logo />
+          <FavoriteBand/>
+          <ChooseArtistsForm />
+          {/*
+          <FestivalList />
+          <FestivalTable />
+
+        */}
+      </div>
+    );
+  }
 }
 
 export default App;
