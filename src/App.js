@@ -1,6 +1,7 @@
 import React from 'react';
-import Navigation from './components/Navigation/Navigation'
-import Logo from './components/Logo/Logo'
+import Navigation from './components/Navigation/Navigation';
+import Logo from './components/Logo/Logo';
+import ChooseArtistsForm from './components/ChooseArtistsForm/ChooseArtistsForm';
 import './App.css';
 
 function App() {
@@ -9,8 +10,8 @@ function App() {
       
         <Navigation />
         <Logo />
-        {
-        /*<ChooseArtistsForm />
+        <ChooseArtistsForm />
+        {/*
         <FestivalList />
         <FestivalTable />
 
