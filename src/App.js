@@ -5,6 +5,8 @@ import SignIn from './components/SignIn/SignIn';
 import Logo from './components/Logo/Logo';
 import FavoriteBand from './components/FavoriteBand/FavoriteBand';
 import ChooseArtistsForm from './components/ChooseArtistsForm/ChooseArtistsForm';
+import FestivalList from './components/FestivalList/FestivalList';
+import FestivalTable from './components/FestivalTable/FestivalTable';
 import './App.css';
 
 const particlesParams = {
@@ -23,8 +25,13 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      input:''
+      input:'',
+      route: 'signin'
     }
+  }
+
+  onRouteChanged = (route) => {
+    this.setState({route: route});
   }
 
   onInputChange = (event) => {
@@ -38,17 +45,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <Particles className='particles' params={particlesParams} />
-          <Navigation />
-          <SignIn />
-          <Logo />
-          <FavoriteBand/>
-          <ChooseArtistsForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>
-          {/*
-          <FestivalList />
-          <FestivalTable />
-
-        */}
+        <Particles className='particles' params={particlesParams} />
+        <Navigation onRouteChanged={this.onRouteChanged}/>
+        {
+          (this.state.route === 'signin')
+          ? <SignIn onRouteChanged={this.onRouteChanged} />
+          : <div>
+              <Logo />
+              <FavoriteBand/>
+              <ChooseArtistsForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>
+              /*
+              <FestivalList />
+              <FestivalTable />
+              */
+            </div> 
+        }
       </div>
     );
   }
