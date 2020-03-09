@@ -1,8 +1,24 @@
 import React from 'react';
+import FestivalCard from '../FestivalCard/FestivalCard';
 
-const FestivalList = () =>
+const FestivalList = ({festivals}) =>
 {
-	return (<p/>);
+	return(
+		<div>
+      {
+        festivals.map((festival, i) => {
+          return (
+            <FestivalCard
+              key={i}
+              name={festival.name}
+              date={festival.date}
+              imgUrl={festival.imgUrl}
+              />
+          );
+        })
+      }
+    </div>
+	)
 };
 
 

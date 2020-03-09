@@ -28,7 +28,10 @@ class App extends Component {
     this.state = {
       input:'',
       route: 'signin',
-      isSignedIn: false
+      isSignedIn: false,
+      festivals : 
+      [{name:'Sziget', date:'july', imgUrl:'http://www.budapesthotelsnet.com/images/budapest-sziget-festival.jpg'},
+       {name:'Rock Werchter', date:'2-5 july', imgUrl:'https://www.carnifest.com/wp-content/uploads/2019/07/Rock_Werchter-photo-www.rockwerchter.be_.jpg'}]
     }
   }
 
@@ -42,7 +45,7 @@ class App extends Component {
           <FavoriteBand/>
           <ChooseArtistsForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>
           
-          <FestivalList />
+          <FestivalList festivals={this.state.festivals}/>
           <FestivalTable />
           
         </div> 
