@@ -31,8 +31,25 @@ class App extends Component {
       isSignedIn: false,
       festivals : 
       [{name:'Sziget', date:'july', imgUrl:'http://www.budapesthotelsnet.com/images/budapest-sziget-festival.jpg'},
-       {name:'Rock Werchter', date:'2-5 july', imgUrl:'https://www.carnifest.com/wp-content/uploads/2019/07/Rock_Werchter-photo-www.rockwerchter.be_.jpg'}]
+       {name:'Rock Werchter', date:'2-5 july', imgUrl:'https://www.carnifest.com/wp-content/uploads/2019/07/Rock_Werchter-photo-www.rockwerchter.be_.jpg'}],
+      user: {
+        id: '',
+        name: '',
+        email: '',
+        joined: '',
+        favBandID: ''
+      }
     }
+  }
+
+  loadUser = (data) => {
+    this.setState({user: {
+      id: data.id,
+      name: data.name,
+      email: data.email,
+      joined: data.joined,
+      favBandID: data.favBandID
+    }});
   }
 
   renderByRouteSwitch = () => {
@@ -42,7 +59,7 @@ class App extends Component {
        return (
         <div>
           <Logo />
-          <FavoriteBand/>
+          <FavoriteBand name={this.state.user.name} favBandID={this.state.user.favBandID}/>
           <ChooseArtistsForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>
           
           <FestivalList festivals={this.state.festivals}/>
@@ -51,9 +68,9 @@ class App extends Component {
         </div> 
         );
       case ('signin'):
-        return (<SignIn onRouteChanged={this.onRouteChanged} />);
+        return (<SignIn onRouteChanged={this.onRouteChanged} loadUser={this.loadUser} />);
       case ('register'):
-        return (<Register onRouteChanged={this.onRouteChanged} />);
+        return (<Register onRouteChanged={this.onRouteChanged} loadUser={this.loadUser} />);
       case ('sighout'):
         return (<SignIn onRouteChanged={this.onRouteChanged} />);
       default:

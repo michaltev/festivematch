@@ -1,14 +1,14 @@
 import React from 'react';
 
-const FavoriteBand = () =>
+const FavoriteBand = ({name, favBandID}) =>
 {
 	return (
 		<div>
 			<div className='white f3'>
-			{'Michal, your favorite band is '}
+			{`${name} , your favorite band is `}
 			</div>
 			<div className='white f1'>
-			{'Alter Bridge'}
+			{favBandID}
 			</div>
 		</div>
 
