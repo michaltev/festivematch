@@ -37,7 +37,8 @@ class App extends Component {
         name: '',
         email: '',
         joined: '',
-        favbandid: ''
+        favbandid: '',
+        favbandname: ''
       }
     }
   }
@@ -48,7 +49,8 @@ class App extends Component {
       name: data.name,
       email: data.email,
       joined: data.joined,
-      favbandid: data.favbandid
+      favbandid: data.favbandid,
+      favbandname: data.favbandname
     }});
   }
 
@@ -62,6 +64,7 @@ class App extends Component {
           <FavoriteBand id={this.state.user.id} 
                         name={this.state.user.name} 
                         favbandid={this.state.user.favbandid}
+                        favbandname={this.state.user.favbandname}
                         loadUser={this.loadUser}/>
           <ChooseArtistsForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>
           
