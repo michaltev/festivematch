@@ -1,12 +1,10 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import Autocomplete from '../Autocomplete/Autocomplete';
 
-const bands = [{name:'Alter Bridge', id:1}, 
-					{name:'Aerosmith', id:2},
-					{name:'Bon Jovi', id:3}];
+let bands = [];
 
 class FavoriteBand extends React.Component {
+
 	constructor(props){
 		super(props);
 		this.state = {
@@ -46,18 +44,8 @@ class FavoriteBand extends React.Component {
 					<div className='white f3'>
 					{`${this.state.name} , you haven't choose your favorite band! Do it now: `}
 					</div>
-					<Autocomplete
-				      id="combo-box-demo"
-				      options={bands}
-				      getOptionLabel={option => option.name}
-				      style={{ width: 300 }}
-				      renderInput={params => <TextField {...params} label="Bands" 
-				      												variant="outlined" />}
-				      onChange={this.onBandChosen}
-				      className='center ma2 pa4 br3 shadow-5 bg-light-gray'
-				    />
+					<Autocomplete onChange={this.onBandChosen}/>
 				</div>
-
 			)
 		}
 		else
