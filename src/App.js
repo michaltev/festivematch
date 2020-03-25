@@ -75,9 +75,9 @@ class App extends Component {
       case ('register'):
         return (<Register onRouteChanged={this.onRouteChanged} loadUser={this.loadUser} />);
       case ('sighout'):
-        return (<SignIn onRouteChanged={this.onRouteChanged} />);
+        return (<SignIn onRouteChanged={this.onRouteChanged} loadUser={this.loadUser}/>);
       default:
-        return (<SignIn onRouteChanged={this.onRouteChanged} />);
+        return (<SignIn onRouteChanged={this.onRouteChanged} loadUser={this.loadUser}/>);
     }
   }
 
