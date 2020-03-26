@@ -66,7 +66,7 @@ class App extends Component {
                         favbandid={this.state.user.favbandid}
                         favbandname={this.state.user.favbandname}
                         loadUser={this.loadUser}/>
-          <ChooseArtistsForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>
+          <ChooseArtistsForm onButtonSearch={this.onButtonSearch} />
           
           <FestivalList festivals={this.state.festivals}/>
           <FestivalTable />
@@ -102,12 +102,8 @@ class App extends Component {
     this.setState({route: route});
   }
 
-  onInputChange = (event) => {
-    console.log(event.target.value);
-  }
-
-  onButtonSubmit = () => {
-    console.log('click');
+  onButtonSearch = (event) => {
+    console.log('now search');
   }
 
   render() {
