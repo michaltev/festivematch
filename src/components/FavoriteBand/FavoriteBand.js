@@ -11,7 +11,8 @@ class FavoriteBand extends React.Component {
 			id: props.id,
 			name: props.name,
 			favbandid: props.favbandid,
-			favbandname: props.favbandname
+			favbandname: props.favbandname,
+			hasfavband: (props.favbandid === "0") ? false : true
 		};
 	}
 
@@ -29,24 +30,25 @@ class FavoriteBand extends React.Component {
 		.then(user => {
 			if(user.id){
 				this.props.loadUser(user);
-				this.setState({favbandid: user.favbandid, favbandname:user.favbandname});
+				this.setState({favbandid: user.favbandid, favbandname:user.favbandname, hasfavband:true});
 			}
 		});
 	}
 
 	onWantToChange = () => {
-		this.setState({favbandid: '0', favbandname: ''});
+		this.setState({hasfavband: false});
 	}
 
 	render(){
-		if(this.state.favbandid === '0')
+		if(this.state.hasfavband === false)
 		{
 			return (
 				<div>
 					<div className='white f3'>
 					{`${this.state.name} , you haven't choose your favorite band! Do it now: `}
 					</div>
-					<Autocomplete onBandChosen={this.onBandChosen}/>
+					<Autocomplete onBandChosen={this.onBandChosen} 
+								favbandid={this.state.favbandid}/>
 				</div>
 			)
 		}

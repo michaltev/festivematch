@@ -16,18 +16,36 @@ export default function Asynchronous(params) {
       return undefined;
     }
 
-    (async () => {
-      fetch('http://localhost:3000/defaultartists', {
-        method: 'get',
-        headers: {'Content-Type':'application/json'}
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (active) {
-          setOptions(data);
-        }
-      });
-    })();
+    if(params.favbandid !== "0")
+    {
+      (async () => {
+        fetch(`http://localhost:3000/similarartists/${params.favbandid}`, {
+          method: 'get',
+          headers: {'Content-Type':'application/json'}
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (active) {
+            setOptions(data);
+          }
+        });
+      })();
+    }
+    else
+    {
+      (async () => {
+        fetch('http://localhost:3000/defaultartists', {
+          method: 'get',
+          headers: {'Content-Type':'application/json'}
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (active) {
+            setOptions(data);
+          }
+        });
+      })();
+    }
 
     return () => {
       active = false;
