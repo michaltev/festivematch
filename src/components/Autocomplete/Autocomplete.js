@@ -17,7 +17,7 @@ export default function Asynchronous(params) {
     }
 
     (async () => {
-      fetch('http://localhost:3000/artists', {
+      fetch('http://localhost:3000/defaultartists', {
         method: 'get',
         headers: {'Content-Type':'application/json'}
       })
@@ -52,22 +52,22 @@ export default function Asynchronous(params) {
       onClose={() => {
         setOpen(false);
       }}
-      onChange={params.onChange}
+      onChange={params.onBandChosen}
       getOptionSelected={(option, value) => option.name === value.name}
       getOptionLabel={option => option.name}
       options={options}
       loading={loading}
-      renderInput={params => (
+      renderInput={textparams => (
         <TextField
-          {...params}
+          {...textparams}
           label="Artists"
           variant="outlined"
           InputProps={{
-            ...params.InputProps,
+            ...textparams.InputProps,
             endAdornment: (
               <React.Fragment>
                 {loading ? <CircularProgress color="inherit" size={20} /> : null}
-                {params.InputProps.endAdornment}
+                {textparams.InputProps.endAdornment}
               </React.Fragment>
             ),
           }}

@@ -16,7 +16,7 @@ class FavoriteBand extends React.Component {
 	}
 
 	onBandChosen = (event, value) => {
-		fetch('http://localhost:3000/band', {
+		fetch('http://localhost:3000/favband', {
 			method: 'put',
 			headers: {'Content-Type':'application/json'},
 			body: JSON.stringify({
@@ -46,7 +46,7 @@ class FavoriteBand extends React.Component {
 					<div className='white f3'>
 					{`${this.state.name} , you haven't choose your favorite band! Do it now: `}
 					</div>
-					<Autocomplete onChange={this.onBandChosen}/>
+					<Autocomplete onBandChosen={this.onBandChosen}/>
 				</div>
 			)
 		}
