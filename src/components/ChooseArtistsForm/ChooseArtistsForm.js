@@ -1,5 +1,6 @@
 import React from 'react';
 import './ChooseArtistsForm.css';
+import ArtistsOptions from '../Autocomplete/ArtistsOptions'
 
 class ChooseArtistsForm extends React.Component {
 
@@ -9,13 +10,21 @@ class ChooseArtistsForm extends React.Component {
 			id: props.id,
 			name: props.name,
 			favbandid: props.favbandid,
-			festivals: [],
 			artists: []
 		};
 	}
 
 	onInputChange = (event) => {
-		console.log(event.target.value);
+		const name = event.target.value;
+
+		fetch(`http://localhost:3000/artists/${name}`, {
+          method: 'get',
+          headers: {'Content-Type':'application/json'}
+        })
+        .then(response => response.json())
+        .then(data => {this.setState({artists : data})});
+
+        
 	}
 
 	onButtonAddArtists = (event) => {
@@ -35,6 +44,7 @@ class ChooseArtistsForm extends React.Component {
 						   type='text'
 						   placeholder="Colaboration with..." 
 						   onChange={this.onInputChange} />
+				    <ArtistsOptions results={this.state.artists}/>
 					<button className='f4 grow w-25 link ph3 pv2 dib white bg-pink' 
 							onClick={this.onButtonAddArtists}>
 						Add artist
