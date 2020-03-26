@@ -1,8 +1,6 @@
 import React from 'react';
 import Autocomplete from '../Autocomplete/Autocomplete';
 
-let bands = [];
-
 class FavoriteBand extends React.Component {
 
 	constructor(props){
