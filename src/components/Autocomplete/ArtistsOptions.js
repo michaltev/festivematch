@@ -4,22 +4,29 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: '100%',
-    backgroundColor: 'transparent'
-  },
-}));
+class ArtistsOptions extends React.Component {
 
-const ArtistsOptions = (props) => {
-	const classes = useStyles();
-	let options = [];
-	options = props.results.map(r => (
-	    <ListItem button key={r.id}>
-        	<ListItemText className='center white f4' primary={r.name} />
-      </ListItem>
-	  ))
-  return <List component="nav" className={classes.root} aria-label="contacts">{options}</List>
+	constructor(props){
+		super(props);
+	}
+
+	render(){
+		const classes = makeStyles(theme => ({
+										  root: {
+										    width: '100%',
+										    backgroundColor: 'transparent'
+										  },
+										}));
+
+		let options = [];
+		options = this.props.results.map(r => (
+		    <ListItem key={r.id} id={r.id} onClick={() => this.props.onArtistClick(r)}>
+	        	<ListItemText className='center white f4' primary={r.name} />
+	      </ListItem>
+		  ));
+
+	  	return <List component="nav" className={classes.root} aria-label="contacts">{options}</List>
+	}
 }
 
 export default ArtistsOptions

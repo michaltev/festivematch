@@ -10,7 +10,8 @@ class ChooseArtistsForm extends React.Component {
 			id: props.id,
 			name: props.name,
 			favbandid: props.favbandid,
-			artists: []
+			artists: [],
+			secondArtist: {}
 		};
 	}
 
@@ -22,13 +23,17 @@ class ChooseArtistsForm extends React.Component {
           headers: {'Content-Type':'application/json'}
         })
         .then(response => response.json())
-        .then(data => {this.setState({artists : data})});
-
-        
+        .then(data => {
+        	this.setState({artists : data, secondArtist : {}})
+        });  
 	}
 
 	onButtonAddArtists = (event) => {
 		console.log('add artists');
+	}
+
+	onArtistClick = (value) => {
+		this.setState({secondArtist : {id: value.id, name: value.name}, artists:[]});
 	}
 
 	render(){
@@ -44,14 +49,15 @@ class ChooseArtistsForm extends React.Component {
 						   type='text'
 						   placeholder="Colaboration with..." 
 						   onChange={this.onInputChange} />
-				    <ArtistsOptions results={this.state.artists}/>
+				    <ArtistsOptions results={this.state.artists} onArtistClick={this.onArtistClick}/>
 					<button className='f4 grow w-25 link ph3 pv2 dib white bg-pink' 
 							onClick={this.onButtonAddArtists}>
 						Add artist
 					</button>
 				</div>
 			</div>
-			<p className='f3 link dim black db pointer' onClick={this.props.onButtonSearch}>
+			<p className='f3 link dim black db pointer' 
+			   onClick={() => this.props.onButtonSearch(this.state.secondArtist)}>
 			{'Lets find you a fastival!'}
 			</p>
 		</div>

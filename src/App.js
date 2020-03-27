@@ -102,8 +102,25 @@ class App extends Component {
     this.setState({route: route});
   }
 
-  onButtonSearch = (event) => {
+  onButtonSearch = (p_secondArtist) => {
     console.log('now search');
+    
+    // search festivals of the favorite band only
+    if(Object.keys(p_secondArtist).length === 0)
+    {
+      fetch(`http://localhost:3000/festivals/${this.state.user.favbandid}`, {
+          method: 'get',
+          headers: {'Content-Type':'application/json'}
+        })
+        .then(response => response.json())
+        .then(data => {
+          this.setState({festivals : data});
+        });
+    }
+    // search festivals of the favorite band + the second artist
+    else {
+      console.log("colaboration");
+    }
   }
 
   render() {
