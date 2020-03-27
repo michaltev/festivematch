@@ -18,14 +18,21 @@ class ChooseArtistsForm extends React.Component {
 	onInputChange = (event) => {
 		const name = event.target.value;
 
-		fetch(`http://localhost:3000/artists/${name}`, {
-          method: 'get',
-          headers: {'Content-Type':'application/json'}
-        })
-        .then(response => response.json())
-        .then(data => {
-        	this.setState({artists : data, secondArtist : {}})
-        });  
+		if(name === "")
+		{
+			this.setState({artists : [], secondArtist : {}})
+		}
+		else
+		{
+			fetch(`http://localhost:3000/artists/${name}`, {
+		          method: 'get',
+		          headers: {'Content-Type':'application/json'}
+	        })
+	        .then(response => response.json())
+	        .then(data => {
+	        	this.setState({artists : data, secondArtist : {}})
+	        }); 
+		}		 
 	}
 
 	onButtonAddArtists = (event) => {
@@ -50,10 +57,6 @@ class ChooseArtistsForm extends React.Component {
 						   placeholder="Colaboration with..." 
 						   onChange={this.onInputChange} />
 				    <ArtistsOptions results={this.state.artists} onArtistClick={this.onArtistClick}/>
-					<button className='f4 grow w-25 link ph3 pv2 dib white bg-pink' 
-							onClick={this.onButtonAddArtists}>
-						Add artist
-					</button>
 				</div>
 			</div>
 			<p className='f3 link dim black db pointer' 
