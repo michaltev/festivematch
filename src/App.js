@@ -29,9 +29,7 @@ class App extends Component {
       input:'',
       route: 'signin',
       isSignedIn: false,
-      festivals : 
-      [{name:'Sziget', date:'july', imgUrl:'http://www.budapesthotelsnet.com/images/budapest-sziget-festival.jpg'},
-       {name:'Rock Werchter', date:'2-5 july', imgUrl:'https://www.carnifest.com/wp-content/uploads/2019/07/Rock_Werchter-photo-www.rockwerchter.be_.jpg'}],
+      festivals : [],
       user: {
         id: '',
         name: '',
