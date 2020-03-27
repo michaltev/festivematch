@@ -9,10 +9,7 @@ const FestivalList = ({festivals}) =>
         festivals.map((festival, i) => {
           return (
             <FestivalCard
-              key={i}
-              name={festival.name}
-              date={festival.date}
-              imgUrl={festival.imgUrl}
+              key={i} festival={festival}
               />
           );
         })
