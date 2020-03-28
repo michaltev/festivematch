@@ -1,6 +1,8 @@
 import React from 'react';
 import './ChooseArtistsForm.css';
-import ArtistsOptions from '../Autocomplete/ArtistsOptions'
+import ArtistsOptions from '../Autocomplete/ArtistsOptions';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 class ChooseArtistsForm extends React.Component {
 
@@ -35,10 +37,6 @@ class ChooseArtistsForm extends React.Component {
 		}		 
 	}
 
-	onButtonAddArtists = (event) => {
-		console.log('add artists');
-	}
-
 	onArtistClick = (value) => {
 		document.getElementById("secondArtist").value = value.name;
 		this.setState({secondArtist : {id: value.id, name: value.name}, artists:[]});
@@ -50,13 +48,17 @@ class ChooseArtistsForm extends React.Component {
 		<div>
 			<div className='center'>
 				<div className='form center pa4 br3 shadow-5'>
-					<p className='f3 white ma1'>
-						{`Any other artists you're interested in?`}
-					</p>
+					<div className='alertline ma1'>
+						<p className='f3 white w-100'>
+							{`Any other artists you're interested in?`}
+						</p>
+						<HighlightOffIcon className={this.state.secondArtist.id ? 'transparent' : 'pink'}/>
+						<CheckCircleOutlineIcon className={this.state.secondArtist.id ? 'yellow' : 'transparent'}/>
+					</div>
 					<input className='f4 pa2 w-75 center' 
 						   type='text'
 						   id='secondArtist'
-						   placeholder="Colaboration with..." 
+						   placeholder="Collaboration with..." 
 						   onChange={this.onInputChange} />
 				    <ArtistsOptions results={this.state.artists} onArtistClick={this.onArtistClick}/>
 				</div>
