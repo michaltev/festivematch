@@ -1,0 +1,10 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* aligns links vertically */
+  justify-content: space-between;
+}
+
+.links {
+	display: inline-flex;
+}

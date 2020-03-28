@@ -3,7 +3,6 @@ import Particles from 'react-particles-js';
 import Navigation from './components/Navigation/Navigation';
 import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register';
-import Logo from './components/Logo/Logo';
 import FavoriteBand from './components/FavoriteBand/FavoriteBand';
 import ChooseArtistsForm from './components/ChooseArtistsForm/ChooseArtistsForm';
 import FestivalList from './components/FestivalList/FestivalList';
@@ -58,7 +57,6 @@ class App extends Component {
       case ('home'):
        return (
         <div>
-          <Logo />
           <FavoriteBand id={this.state.user.id} 
                         name={this.state.user.name} 
                         favbandid={this.state.user.favbandid}
