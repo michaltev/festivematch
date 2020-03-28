@@ -115,7 +115,14 @@ class App extends Component {
     }
     // search festivals of the favorite band + the second artist
     else {
-      console.log("colaboration");
+      fetch(`http://localhost:3000/festivals/${this.state.user.favbandid}/${p_secondArtist.id}`, {
+          method: 'get',
+          headers: {'Content-Type':'application/json'}
+        })
+        .then(response => response.json())
+        .then(data => {
+          this.setState({festivals : data});
+        });
     }
   }
 
