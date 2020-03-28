@@ -4,7 +4,7 @@ const FestivalCard = ({ festival }) =>
 {
 	return (
     <div className='tc grow bg-light-green br3 pa3 ma2 dib bw2 shadow-5 w-30'>
-      <img alt='festival' src={festival.imgUrl} />
+      <img alt='festival' src={require(`../../Images/${Math.floor(Math.random() * 4) + 1}.jpg`)}/> 
       <div>
         <h2>{festival.displayName}</h2>
         <h3>{festival.location.city}</h3>
