@@ -40,6 +40,7 @@ class ChooseArtistsForm extends React.Component {
 	}
 
 	onArtistClick = (value) => {
+		document.getElementById("secondArtist").value = value.name;
 		this.setState({secondArtist : {id: value.id, name: value.name}, artists:[]});
 	}
 
@@ -54,6 +55,7 @@ class ChooseArtistsForm extends React.Component {
 					</p>
 					<input className='f4 pa2 w-75 center' 
 						   type='text'
+						   id='secondArtist'
 						   placeholder="Colaboration with..." 
 						   onChange={this.onInputChange} />
 				    <ArtistsOptions results={this.state.artists} onArtistClick={this.onArtistClick}/>
