@@ -6,10 +6,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 class ArtistsOptions extends React.Component {
 
-	constructor(props){
-		super(props);
-	}
-
 	render(){
 		const classes = makeStyles(theme => ({
 										  root: {
@@ -25,7 +21,7 @@ class ArtistsOptions extends React.Component {
 	      </ListItem>
 		  ));
 
-	  	return <List component="nav" className={classes.root} aria-label="contacts">{options}</List>
+	  	return <List className={classes.root} aria-label="contacts">{options}</List>
 	}
 }
 
