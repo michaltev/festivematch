@@ -1,6 +1,6 @@
 import React from 'react';
 import './ChooseArtistsForm.css';
-import ArtistsOptions from '../Autocomplete/ArtistsOptions';
+import ArtistsSearch from '../Autocomplete/ArtistsSearch';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
@@ -12,34 +12,16 @@ class ChooseArtistsForm extends React.Component {
 			id: props.id,
 			name: props.name,
 			favbandid: props.favbandid,
-			artists: [],
 			secondArtist: {}
 		};
 	}
 
-	onInputChange = (event) => {
-		const name = event.target.value;
-
-		if(name === "")
-		{
-			this.setState({artists : [], secondArtist : {}})
-		}
-		else
-		{
-			fetch(`http://localhost:3000/artists/${name}`, {
-		          method: 'get',
-		          headers: {'Content-Type':'application/json'}
-	        })
-	        .then(response => response.json())
-	        .then(data => {
-	        	this.setState({artists : data, secondArtist : {}})
-	        }); 
-		}		 
+	initSecondArtist = () => {
+		this.setState({secondArtist : {}});	 
 	}
 
-	onArtistClick = (value) => {
-		document.getElementById("secondArtist").value = value.name;
-		this.setState({secondArtist : {id: value.id, name: value.name}, artists:[]});
+	setSecondArtist = (artistID, artistName) => {
+		this.setState({secondArtist : {id: artistID, name: artistName}});
 	}
 
 	render(){
@@ -55,12 +37,7 @@ class ChooseArtistsForm extends React.Component {
 						<HighlightOffIcon className={this.state.secondArtist.id ? 'transparent' : 'pink'}/>
 						<CheckCircleOutlineIcon className={this.state.secondArtist.id ? 'yellow' : 'transparent'}/>
 					</div>
-					<input className='f4 pa2 w-75 center' 
-						   type='text'
-						   id='secondArtist'
-						   placeholder="Collaboration with..." 
-						   onChange={this.onInputChange} />
-				    <ArtistsOptions results={this.state.artists} onArtistClick={this.onArtistClick}/>
+					<ArtistsSearch initSecondArtist={this.initSecondArtist} setSecondArtist={this.setSecondArtist}/>
 				</div>
 			</div>
 			<p className='f3 link dim black db pointer' 
