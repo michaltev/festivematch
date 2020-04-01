@@ -37,7 +37,7 @@ class ChooseArtistsForm extends React.Component {
 						<HighlightOffIcon className={this.state.secondArtist.id ? 'transparent' : 'pink'}/>
 						<CheckCircleOutlineIcon className={this.state.secondArtist.id ? 'yellow' : 'transparent'}/>
 					</div>
-					<ArtistsSearch initSecondArtist={this.initSecondArtist} setSecondArtist={this.setSecondArtist}/>
+					<ArtistsSearch initChosenArtist={this.initSecondArtist} setChosenArtist={this.setSecondArtist}/>
 				</div>
 			</div>
 			<p className='f3 link dim black db pointer' 

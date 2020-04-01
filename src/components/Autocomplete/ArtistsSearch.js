@@ -29,14 +29,14 @@ class ArtistsSearch extends React.Component {
 	        }); 
 		}
 
-		this.props.initSecondArtist();	 
+		this.props.initChosenArtist();	 
 	};
 
 	onArtistClick = (value) => {
 		document.getElementById("secondArtist").value = value.name;
 		this.setState({artists:[]});
 
-		this.props.setSecondArtist(value.id, value.name);
+		this.props.setChosenArtist(value.id, value.name);
 	};
 
 	render(){
