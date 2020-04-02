@@ -40,6 +40,17 @@ class App extends Component {
     }
   }
 
+  searchFestivalsByFavArtist = () => {
+    fetch(`http://localhost:3000/festivals/${this.state.user.favbandid}`, {
+          method: 'get',
+          headers: {'Content-Type':'application/json'}
+    })
+    .then(response => response.json())
+    .then(data => {
+      this.setState({festivals : data});
+    });
+  };
+
   loadUser = (data) => {
     this.setState({user: {
       id: data.id,
@@ -49,6 +60,8 @@ class App extends Component {
       favbandid: data.favbandid,
       favbandname: data.favbandname
     }});
+
+    this.searchFestivalsByFavArtist();
   }
 
   renderByRouteSwitch = () => {
@@ -99,19 +112,10 @@ class App extends Component {
   }
 
   onButtonSearch = (p_secondArtist) => {
-    console.log('now search');
-    
     // search festivals of the favorite band only
     if(Object.keys(p_secondArtist).length === 0)
     {
-      fetch(`http://localhost:3000/festivals/${this.state.user.favbandid}`, {
-          method: 'get',
-          headers: {'Content-Type':'application/json'}
-        })
-        .then(response => response.json())
-        .then(data => {
-          this.setState({festivals : data});
-        });
+      this.searchFestivalsByFavArtist();
     }
     // search festivals of the favorite band + the second artist
     else {
