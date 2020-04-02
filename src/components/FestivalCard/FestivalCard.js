@@ -1,4 +1,5 @@
 import React from 'react';
+import Rating from '@material-ui/lab/Rating';
 
 const FestivalCard = ({ festival }) =>
 {
@@ -9,7 +10,11 @@ const FestivalCard = ({ festival }) =>
         <h2 className={festival.status !== "ok" ? "red" : "black"}>{festival.displayName}</h2>
         <h3>{festival.location.city}</h3>
         <h4>Start: {festival.start.date} | End: {festival.end.date}</h4>
-        <p> {Math.round((festival.popularity + Number.EPSILON) * 100) / 10}/10 popularity </p>
+        <Rating name="popularity" 
+                value={(Math.round(festival.popularity * 10 * 2) / 2).toFixed(1)}
+                max={10}
+                precision={0.5}
+                readOnly />
       </div>
     </div>
   );
