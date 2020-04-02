@@ -33,7 +33,7 @@ class ArtistsSearch extends React.Component {
 	};
 
 	onArtistClick = (value) => {
-		document.getElementById("secondArtist").value = value.name;
+		document.getElementById("artistNameInput").value = value.name;
 		this.setState({artists:[]});
 
 		this.props.setChosenArtist(value.id, value.name);
@@ -44,7 +44,7 @@ class ArtistsSearch extends React.Component {
 		<div>
 			<input className='f4 pa2 w-75 center' 
 				   type='text'
-				   id='secondArtist'
+				   id='artistNameInput'
 				   placeholder="Collaboration with..." 
 				   onChange={this.onInputChange} />
 		    <ArtistsOptions results={this.state.artists} onArtistClick={this.onArtistClick}/>
