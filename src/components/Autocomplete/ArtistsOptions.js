@@ -17,7 +17,7 @@ class ArtistsOptions extends React.Component {
 		let options = [];
 		options = this.props.results.map(r => (
 		    <ListItem key={r.id} id={r.id} onClick={() => this.props.onArtistClick(r)}>
-	        	<ListItemText className='center white f4' primary={r.name} />
+	        	<ListItemText className='center white f4' primary={r.name} style={{'textAlignLast': 'center'}} />
 	      </ListItem>
 		  ));
 
