@@ -11,7 +11,7 @@ const FestivalCard = ({ festival }) =>
         <h3>{festival.location.city}</h3>
         <h4>Start: {festival.start.date} | End: {festival.end.date}</h4>
         <Rating name="popularity" 
-                value={(Math.round(festival.popularity * 10 * 2) / 2).toFixed(1)}
+                value={Number((Math.round(festival.popularity * 10 * 2) / 2).toFixed(1))}
                 max={10}
                 precision={0.5}
                 readOnly />
