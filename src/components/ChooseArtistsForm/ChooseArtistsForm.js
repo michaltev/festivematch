@@ -42,7 +42,7 @@ class ChooseArtistsForm extends React.Component {
 			</div>
 			<p className='f3 link dim black db pointer' 
 			   onClick={() => this.props.onButtonSearch(this.state.secondArtist)}>
-			{'Lets find you a fastival!'}
+			{'Lets find me a fastival!'}
 			</p>
 		</div>
 
