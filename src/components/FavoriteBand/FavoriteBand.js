@@ -43,7 +43,7 @@ class FavoriteBand extends React.Component {
 			return (
 				<div>
 					<div className='white f3'>
-					{`${this.state.name} , you haven't choose your favorite band! Do it now: `}
+					{`${this.state.name} , you haven't choose your favorite artist! Do it now: `}
 					</div>
 					<Autocomplete onBandChosen={this.onBandChosen} 
 								favbandid={this.state.favbandid}/>
@@ -55,7 +55,7 @@ class FavoriteBand extends React.Component {
 			return (
 				<div>
 					<div className='white f3'>
-					{`${this.state.name} , your favorite band is `}
+					{`${this.state.name} , your favorite artist is `}
 					</div>
 					<div className='white f1'>
 					{this.state.favbandname}
